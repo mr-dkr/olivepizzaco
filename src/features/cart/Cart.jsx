@@ -4,6 +4,7 @@ import CartItem from '../cart/CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, getCart } from './cartSlice';
 import EmptyCart from './EmptyCart';
+import { toast } from 'react-hot-toast';
 function Cart() {
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function Cart() {
 
   function handleClearCart() {
     dispatch(clearCart());
+    toast.success(' Cart Cleared !');
   }
 
   if (!cart.length) return <EmptyCart />;
